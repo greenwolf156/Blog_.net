@@ -16,16 +16,19 @@ namespace BlogsConsole
             logger.Info("Program started");
             try
             {
-                string choice;
-                string bln;
-                Console.WriteLine("1) Display all blogs");
-                Console.WriteLine("2) Add blog");
-                Console.WriteLine("3) Create Post");
-                Console.WriteLine("Enter to quit");
-                choice = Console.ReadLine();
-                logger.Info("User choice: {Choice}", choice);
-                var db = new BloggingContext();
-                if (choice == "1")
+                string choice = "";
+                do
+                {
+                    string bln;
+                    Console.WriteLine("Enter Selection: ");
+                    Console.WriteLine("1) Display all blogs");
+                    Console.WriteLine("2) Add blog");
+                    Console.WriteLine("3) Create Post");
+                    Console.WriteLine("Enter q to quit");
+                    choice = Console.ReadLine();
+                    logger.Info("User choice: {Choice}", choice);
+                    var db = new BloggingContext();
+                    if (choice == "1")
                 {
                     var query = db.Blogs.OrderBy(b => b.Name);
 
@@ -59,8 +62,8 @@ namespace BlogsConsole
                     var post = new Post { Title = blpt, Content = blpc, Blog = bl};
                     db.MakePost(post);
                     logger.Info("Post made");
-                } while (choice == "1" || choice == "2"|| choice == "3") ;
-
+                    }
+                } while ((choice != "q" || choice != "Q") && (choice == "1" || choice == "2" || choice == "3"));
             }
             catch (Exception ex)
             {
