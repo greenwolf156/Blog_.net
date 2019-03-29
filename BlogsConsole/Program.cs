@@ -43,8 +43,10 @@ namespace BlogsConsole
                         // Create and save a new Blog
                         Console.Write("Enter a name for a new Blog: ");
                         var name = Console.ReadLine();
+                        int c = db.Blogs.Count();
+                        c = c + 1;
 
-                        var blog = new Blog { Name = name };
+                        var blog = new Blog { Name = name, BlogId = c };
 
 
                         db.AddBlog(blog);
