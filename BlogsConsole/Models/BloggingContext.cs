@@ -14,5 +14,21 @@ namespace BlogsConsole.Models
             this.Blogs.Add(blog);
             this.SaveChanges();
         }
+        public void FindBlog(string blog)
+        {
+            this.Blogs.Find(blog);
+        }
+        public Blog RealBlog(string blog)
+        {
+            return this.Blogs.Find(blog);
+            
+        }
+        public void MakePost(Post p)
+        {
+            this.Posts.Add(p);
+            this.SaveChanges();
+
+        }
+
     }
 }
