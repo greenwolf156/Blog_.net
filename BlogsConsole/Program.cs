@@ -37,7 +37,6 @@ namespace BlogsConsole
                         {
                             Console.WriteLine(item.Name);
                         }
-                        Console.WriteLine();
                     }
                     else if (choice == "2")
                     {
@@ -64,7 +63,8 @@ namespace BlogsConsole
                         db.MakePost(post);
                         logger.Info("Post made");
                     }
-                } while ((choice != "q" || choice != "Q") && (choice == "1" || choice == "2" || choice == "3"));
+                Console.WriteLine();
+                } while ((choice != "q" && choice != "Q") && (choice == "1" || choice == "2" || choice == "3"));
             }
             catch (Exception ex)
             {
