@@ -49,7 +49,9 @@ namespace BlogsConsole
                         }
                         else
                         {
-                            var blog = new Blog { Name = name };
+                            int c = db.Blogs.Count();
+                            c = c + 1;
+                            var blog = new Blog { Name = name, BlogId = c };
 
 
                             db.AddBlog(blog);
