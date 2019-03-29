@@ -49,9 +49,8 @@ namespace BlogsConsole
                         }
                         else
                         {
-                            int c = db.Blogs.Count();
-                            c = c + 1;
-                            var blog = new Blog { Name = name, BlogId = c };
+                            
+                            var blog = new Blog { Name = name };
 
 
                             db.AddBlog(blog);
@@ -60,7 +59,7 @@ namespace BlogsConsole
                     }
                     else if (choice == "3")
                     {
-                        Console.Write("Select the blog you want to post to: ");
+                        Console.WriteLine("Select the blog you want to post to: ");
                         var query = db.Blogs.OrderBy(b => b.Name);
                         int bln;
                         foreach (var item in query)
@@ -77,7 +76,7 @@ namespace BlogsConsole
                             if (bln > 0 && bln <= db.Blogs.Count())
                             {
                                 Blog bl = db.RealBlog(bln);
-                                Console.Write("Enter Post Title: ");
+                                Console.WriteLine("Enter Post Title: ");
                                 string blpt = Console.ReadLine();
                                 if(blpt == "")
                                 {
@@ -85,9 +84,9 @@ namespace BlogsConsole
                                 }
                                 else
                                 {
-                                    Console.Write("Enter Post Content: ");
+                                    Console.WriteLine("Enter Post Content: ");
                                     string blpc = Console.ReadLine();
-                                    var post = new Post { Title = blpt, Content = blpc, Blog = bl, BlogId = bln};
+                                    var post = new Post { Title = blpt, Content = blpc, BlogId = bln};
                                     db.MakePost(post);
                                     logger.Info("Post added - \"{blpt}\"", blpt);
                                 }
@@ -109,8 +108,12 @@ namespace BlogsConsole
                         //db.MakePost(post);
                         //logger.Info("Post made");
                     }
+                    else if (choice == "4")
+                    {
+
+                    }
                     Console.WriteLine();
-                } while ((choice != "q" && choice != "Q") && (choice == "1" || choice == "2" || choice == "3"));
+                } while ((choice != "q" && choice != "Q") && (choice == "1" || choice == "2" || choice == "3" || choice == "4"));
             }
             catch (Exception ex)
             {
