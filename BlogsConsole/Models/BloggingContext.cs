@@ -21,7 +21,12 @@ namespace BlogsConsole.Models
         public Blog RealBlog(string blog)
         {
             return this.Blogs.Find(blog);
-            
+
+        }
+        public Blog RealBlog(int blogid)
+        {
+            return this.Blogs.Find(blogid);
+
         }
         public void MakePost(Post p)
         {
