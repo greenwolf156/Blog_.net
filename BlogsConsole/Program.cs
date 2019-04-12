@@ -75,7 +75,7 @@ namespace BlogsConsole
                         }
                         else
                         {
-                            if (bln > 0 && bln <= db.Blogs.Count())
+                            if (db.Blogs.Any(b => b.BlogId == bln))
                             {
                                 Blog bl = db.RealBlog(bln);
                                 Console.WriteLine("Enter Post Title: ");
@@ -118,7 +118,7 @@ namespace BlogsConsole
                         int bln;
                         foreach (var item in query)
                         {
-                            Console.WriteLine(item.BlogId + ") Posts from" + item.Name);
+                            Console.WriteLine(item.BlogId + ") Posts from " + item.Name);
                         }
 
                         if (!int.TryParse(Console.ReadLine(), out bln))
